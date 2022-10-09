@@ -17,12 +17,6 @@ export default function Recommend() {
                                             <div className="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
                                                 <div className="recommend-slider2 rounded mb-0">
                                                     <div className="osahan-slider-item m-2 rounded">
-                                                        <img src="img/recommend/r1.jpg" className="img-fluid mx-auto rounded shadow-sm" alt="Responsive image"/>
-                                                    </div>
-                                                    <div className="osahan-slider-item m-2 rounded">
-                                                        <img src="img/recommend/r2.jpg" className="img-fluid mx-auto rounded shadow-sm" alt="Responsive image"/>
-                                                    </div>
-                                                    <div className="osahan-slider-item m-2 rounded">
                                                         <img src="img/recommend/r3.jpg" className="img-fluid mx-auto rounded shadow-sm" alt="Responsive image"/>
                                                     </div>
                                                 </div>
@@ -50,12 +44,6 @@ export default function Recommend() {
                                             <div className="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
                                                 <div className="recommend-slider2 rounded mb-0">
                                                     <div className="osahan-slider-item m-2">
-                                                        <img src="img/recommend/r4.jpg" className="img-fluid mx-auto rounded shadow-sm" alt="Responsive image"/>
-                                                    </div>
-                                                    <div className="osahan-slider-item m-2">
-                                                        <img src="img/recommend/r5.jpg" className="img-fluid mx-auto rounded shadow-sm" alt="Responsive image"/>
-                                                    </div>
-                                                    <div className="osahan-slider-item m-2">
                                                         <img src="img/recommend/r6.jpg" className="img-fluid mx-auto rounded shadow-sm" alt="Responsive image"/>
                                                     </div>
                                                 </div>
@@ -80,12 +68,6 @@ export default function Recommend() {
                                         <Link to='/productdetails' className="text-dark text-decoration-none">
                                             <div className="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
                                                 <div className="recommend-slider2 rounded mb-0">
-                                                    <div className="osahan-slider-item m-2">
-                                                        <img src="img/recommend/r7.jpg" className="img-fluid mx-auto rounded shadow-sm" alt="Responsive image"/>
-                                                    </div>
-                                                    <div className="osahan-slider-item m-2">
-                                                        <img src="img/recommend/r8.jpg" className="img-fluid mx-auto rounded shadow-sm" alt="Responsive image"/>
-                                                    </div>
                                                     <div className="osahan-slider-item m-2">
                                                         <img src="img/recommend/r9.jpg" className="img-fluid mx-auto rounded shadow-sm" alt="Responsive image"/>
                                                     </div>

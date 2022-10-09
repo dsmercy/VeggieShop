@@ -1,18 +1,17 @@
 import React from 'react'
-import ProductCard from '../Basket/ProductCard'
-import Recommend from '../Basket/Recommend'
 import ProductSlide from '../components/ProductSlide'
-import DarkMode from '../layout/DarkMode'
 import Footer from '../layout/Footer'
 import Header from '../layout/Header'
+import Theme from '../layout/Theme'
 import ProductsList from './ProductsList'
-import Promo from './Promo'
+import Promo from '../components/Promo'
+import Recommend from './Recommend'
+import Trending from '../components/Trending'
 
 export default function Home() {
     return (
         <>
-        <Header/>    
-     
+        <Header/>         
             <section className="py-4 osahan-main-body">
                 <div className="container">
                     <div className="row">
@@ -21,8 +20,8 @@ export default function Home() {
                                 <div className="osahan-body">
                                     <ProductSlide />
                                     <Promo />
-                                    <DarkMode/>
-                                    <ProductsList />
+                                    <Theme/>
+                                    <Trending />
                                     <Recommend />
 
                                 </div>
