@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import Carousel from 'react-grid-carousel'
 import { Routes, Route } from 'react-router-dom'
 import Login from './account/Login';
 import Register from './account/Register';
@@ -12,13 +11,11 @@ import ProductsList from './features/ProductsList';
 
 function App() {
 
+// set default theme
 useEffect(() => {
   document.documentElement.setAttribute('class', 'dark');
       localStorage.setItem('theme', 'dark');
 });
-
-
-  const randomImgUrl = 'https://picsum.photos/{x}/{y}?random='
 
   return (
     <>
