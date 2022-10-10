@@ -144,7 +144,7 @@ export default function Home() {
                             Products
                         </Link>
                         <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <Link className="dropdown-item" to='productdetails'>Most Popular</Link>
+                        <Link className="dropdown-item" to="/productslist">All Products</Link>
                             <Link className="dropdown-item" to='listing'>Vegetables</Link>
                             <Link className="dropdown-item" to='productdetails'>Fruits</Link>
                             
