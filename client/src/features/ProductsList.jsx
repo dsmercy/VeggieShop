@@ -35,8 +35,8 @@ export default function ProductsList() {
                                 <div className="d-flex align-items-center mb-3">
                                     <h4>All Products</h4>
                                     <div className="m-0 text-center ml-auto">
-                                        <Link to='/' href="#" data-toggle="modal" data-target="#exampleModal" className="btn text-muted bg-white mr-2"><i className="icofont-filter mr-1"></i> Filter</Link>
-                                        <Link to='/' href="#" data-toggle="modal" data-target="#exampleModal" className="btn text-muted bg-white"><i className="icofont-signal mr-1"></i> Sort</Link>
+                                        <Link to='/'  data-toggle="modal" data-target="#exampleModal" className="btn text-muted bg-white mr-2"><i className="icofont-filter mr-1"></i> Filter</Link>
+                                        <Link to='/'  data-toggle="modal" data-target="#exampleModal" className="btn text-muted bg-white"><i className="icofont-signal mr-1"></i> Sort</Link>
                                     </div>
                                 </div>
                                 <div className="row">

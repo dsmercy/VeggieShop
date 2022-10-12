@@ -6,7 +6,7 @@ export default function Home() {
    <>
    <div className="bg-white shadow-sm osahan-main-nav">
         <nav className="navbar navbar-expand-lg navbar-light bg-white osahan-header py-0 container">
-            <Link className="navbar-brand mr-0" to='/'><img className="img-fluid logo-img " src="img/logo.png"/></Link>
+            <Link className="navbar-brand mr-0" to='/'><img alt='tag' className="img-fluid logo-img " src="img/logo.png"/></Link>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
@@ -64,7 +64,7 @@ export default function Home() {
                 <div className="dropdown mr-3">
                     <Link to='/' className="dropdown-toggle text-dark" id="dropdownMenuButton" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
-                        <img src="img/user.png" className="img-fluid rounded-circle header-user mr-2"/> Hi Osahan
+                        <img src="img/user.png" alt='name' className="img-fluid rounded-circle header-user mr-2"/> Hi Osahan
                     </Link>
                     <div className="dropdown-menu dropdown-menu-right top-profile-drop"
                         aria-labelledby="dropdownMenuButton">

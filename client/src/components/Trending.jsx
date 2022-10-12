@@ -12,8 +12,8 @@ export default function Trending() {
                         <div className="d-flex align-items-center mb-3">
                            <h4>Pick's Today</h4>
                            <div className="m-0 text-center ml-auto">
-                              <Link to='/' href="#" data-toggle="modal" data-target="#exampleModal" className="btn text-muted bg-white mr-2"><i className="icofont-filter mr-1"></i> Filter</Link>
-                              <Link to='/' href="#" data-toggle="modal" data-target="#exampleModal" className="btn text-muted bg-white"><i className="icofont-signal mr-1"></i> Sort</Link>
+                              <Link to='/'  data-toggle="modal" data-target="#exampleModal" className="btn text-muted bg-white mr-2"><i className="icofont-filter mr-1"></i> Filter</Link>
+                              <Link to='/'  data-toggle="modal" data-target="#exampleModal" className="btn text-muted bg-white"><i className="icofont-signal mr-1"></i> Sort</Link>
                            </div>
                         </div>
                         <div className="row">
@@ -139,7 +139,7 @@ export default function Trending() {
                                           <h6>Tomato</h6>
                                           <div className="d-flex align-items-center">
                                              <h6 className="price m-0 text-success">$1/kg</h6>
-                                             <Link to='/' className="ml-auto" href="#">
+                                             <Link to='/' className="ml-auto" >
                                                 <form id='myform' className="cart-items-number d-flex" method='POST' action='#'>
                                                    <input type='button' defaultValue='-' className='qtyminus btn btn-success btn-sm' />
                                                    <input type='text' name='quantity' defaultValue='1' className='qty form-control' />
@@ -246,7 +246,7 @@ export default function Trending() {
                                           <h6>Capsicum</h6>
                                           <div className="d-flex align-items-center">
                                              <h6 className="price m-0 text-success">$2.5/kg</h6>
-                                             <Link to='/' className="ml-auto" href="#">
+                                             <Link to='/' className="ml-auto" >
                                                 <form id='myform' className="cart-items-number d-flex" method='POST' action='#'>
                                                    <input type='button' defaultValue='-' className='qtyminus btn btn-success btn-sm' />
                                                    <input type='text' name='quantity' defaultValue='1' className='qty form-control' />
