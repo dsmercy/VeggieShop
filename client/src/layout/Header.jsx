@@ -57,10 +57,9 @@ export default function Home() {
             </div>
             <div className="ml-auto d-flex align-items-center">
 
-                <Link to='/' data-toggle="modal" data-target="#login"
-                    className="mr-2 text-dark bg-light rounded-pill p-2 icofont-size border shadow-sm">
+                <div className="mr-2 text-dark bg-light rounded-pill p-2 icofont-size border shadow-sm">
                     <Link className="icofont-login" to="/login"></Link>
-                </Link>
+                </div>
 
                 <div className="dropdown mr-3">
                     <Link to='/' className="dropdown-toggle text-dark" id="dropdownMenuButton" data-toggle="dropdown"

@@ -6,9 +6,9 @@ export default function ProductCard({ product }) {
 
 
     // set default theme
-    useEffect(() => {
-        console.log(product);
-    }, [product]);
+    // useEffect(() => {
+    //     console.log(product);
+    // }, [product]);
 
 
     return (
@@ -16,7 +16,7 @@ export default function ProductCard({ product }) {
             <div className="col-6 col-md-3 mb-3">
                 <div className="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
                     <div className="list-card-image">
-                        <Link to='/productdetails' className="text-dark">
+                        <div className="text-dark">
                             <div className="member-plan position-absolute"><span className="badge m-3 badge-danger">10%</span></div>
                             <div className="p-3">
                                 <img src={product.pictureUrl} className="img-fluid item-img w-100 mb-3" />
@@ -37,7 +37,7 @@ export default function ProductCard({ product }) {
                                     </div>
                                 </div>
                             </div>
-                        </Link>
+                        </div>
                     </div>
                 </div>
             </div>

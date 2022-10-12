@@ -11,27 +11,10 @@ import Trending from '../components/Trending'
 export default function Home() {
     return (
         <>
-        <Header/>         
-            <section className="py-4 osahan-main-body">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-lg-12">
-                            <div className="osahan-home-page">
-                                <div className="osahan-body">
-                                    <ProductSlide />
-                                    <Promo />
-                                    <Theme/>
-                                    <Trending />
-                                    <Recommend />
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        
-      <Footer/>
+            <ProductSlide />
+            <Promo />
+            <Trending />
+            <Recommend />
         </>
     )
 }

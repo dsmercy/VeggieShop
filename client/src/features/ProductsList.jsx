@@ -27,7 +27,6 @@ export default function ProductsList() {
 
     return (
         <>
-            <Header />
             <section className="py-4 osahan-main-body">
                 <div className="container">
                     <div className="row">
@@ -51,8 +50,6 @@ export default function ProductsList() {
                     </div>
                 </div>
             </section>
-            <Theme />
-            <Footer />
 
         </>
     )

@@ -12,7 +12,7 @@ export default function Recommend() {
             <div className="osahan-recommend">
                 <div className="row">
                     <div className="col-12 col-md-4 mb-3">
-                        <Link to='/productdetails' className="text-dark text-decoration-none">
+                        <div className="text-dark text-decoration-none">
                             <div className="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
                                 <div className="recommend-slider2 rounded mb-0">
                                     <div className="osahan-slider-item m-2 rounded">
@@ -36,10 +36,10 @@ export default function Recommend() {
                                     </div>
                                 </div>
                             </div>
-                        </Link>
+                        </div>
                     </div>
                     <div className="col-12 col-md-4 mb-3">
-                        <Link to='/productdetails' className="text-dark text-decoration-none">
+                        <div className="text-dark text-decoration-none">
                             <div className="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
                                 <div className="recommend-slider2 rounded mb-0">
                                     <div className="osahan-slider-item m-2">
@@ -61,10 +61,10 @@ export default function Recommend() {
                                     </div>
                                 </div>
                             </div>
-                        </Link>
+                        </div>
                     </div>
                     <div className="col-12 col-md-4 mb-3">
-                        <Link to='/productdetails' className="text-dark text-decoration-none">
+                        <div className="text-dark text-decoration-none">
                             <div className="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
                                 <div className="recommend-slider2 rounded mb-0">
                                     <div className="osahan-slider-item m-2">
@@ -88,7 +88,7 @@ export default function Recommend() {
                                     </div>
                                 </div>
                             </div>
-                        </Link>
+                        </div>
                     </div>
                 </div>
             </div>

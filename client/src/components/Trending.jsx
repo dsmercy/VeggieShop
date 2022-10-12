@@ -20,7 +20,7 @@ export default function Trending() {
                            <div className="col-6 col-md-3 mb-3">
                               <div className="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
                                  <div className="list-card-image">
-                                    <Link to='/productdetails' className="text-dark">
+                                    <div className="text-dark">
                                        <div className="member-plan position-absolute"><span className="badge m-3 badge-danger">10%</span></div>
                                        <div className="p-3">
                                           <img src="img/listing/v1.jpg" className="img-fluid item-img w-100 mb-3" />
@@ -41,14 +41,14 @@ export default function Trending() {
                                              </div>
                                           </div>
                                        </div>
-                                    </Link>
+                                    </div>
                                  </div>
                               </div>
                            </div>
                            <div className="col-6 col-md-3 mb-3">
                               <div className="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
                                  <div className="list-card-image">
-                                    <Link to='/productdetails' className="text-dark">
+                                    <div className="text-dark">
                                        <div className="member-plan position-absolute"><span className="badge m-3 badge-danger">5%</span></div>
                                        <div className="p-3">
                                           <img src="img/listing/v2.jpg" className="img-fluid item-img w-100 mb-3" />
@@ -69,14 +69,14 @@ export default function Trending() {
                                              </div>
                                           </div>
                                        </div>
-                                    </Link>
+                                    </div>
                                  </div>
                               </div>
                            </div>
                            <div className="col-6 col-md-3 mb-3">
                               <div className="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
                                  <div className="list-card-image">
-                                    <Link to='/productdetails' className="text-dark">
+                                    <div className="text-dark">
                                        <div className="member-plan position-absolute"><span className="badge m-3 badge-success">10%</span></div>
                                        <div className="p-3">
                                           <img src="img/listing/v5.jpg" className="img-fluid item-img w-100 mb-3" />
@@ -97,14 +97,14 @@ export default function Trending() {
                                              </div>
                                           </div>
                                        </div>
-                                    </Link>
+                                    </div>
                                  </div>
                               </div>
                            </div>
                            <div className="col-6 col-md-3 mb-3">
                               <div className="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
                                  <div className="list-card-image">
-                                    <Link to='/productdetails' className="text-dark">
+                                    <div className="text-dark">
                                        <div className="member-plan position-absolute"><span className="badge m-3 badge-success">10%</span></div>
                                        <div className="p-3">
                                           <img src="img/listing/v6.jpg" className="img-fluid item-img w-100 mb-3" />
@@ -125,14 +125,14 @@ export default function Trending() {
                                              </div>
                                           </div>
                                        </div>
-                                    </Link>
+                                    </div>
                                  </div>
                               </div>
                            </div>
                            <div className="col-6 col-md-3 mb-3">
                               <div className="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
                                  <div className="list-card-image">
-                                    <Link to='/productdetails' className="text-dark">
+                                    <div className="text-dark">
                                        <div className="member-plan position-absolute"><span className="badge m-3 badge-warning">5%</span></div>
                                        <div className="p-3">
                                           <img src="img/listing/v3.jpg" className="img-fluid item-img w-100 mb-3" />
@@ -148,14 +148,14 @@ export default function Trending() {
                                              </Link>
                                           </div>
                                        </div>
-                                    </Link>
+                                    </div>
                                  </div>
                               </div>
                            </div>
                            <div className="col-6 col-md-3 mb-3">
                               <div className="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
                                  <div className="list-card-image">
-                                    <Link to='/productdetails' className="text-dark">
+                                    <div className="text-dark">
                                        <div className="member-plan position-absolute"><span className="badge m-3 badge-warning">15%</span></div>
                                        <div className="p-3">
                                           <img src="img/listing/v4.jpg" className="img-fluid item-img w-100 mb-3" />
@@ -176,14 +176,14 @@ export default function Trending() {
                                              </div>
                                           </div>
                                        </div>
-                                    </Link>
+                                    </div>
                                  </div>
                               </div>
                            </div>
                            <div className="col-6 col-md-3 mb-3">
                               <div className="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
                                  <div className="list-card-image">
-                                    <Link to='/productdetails' className="text-dark">
+                                    <div className="text-dark">
                                        <div className="member-plan position-absolute"><span className="badge m-3 badge-warning">5%</span></div>
                                        <div className="p-3">
                                           <img src="img/listing/v7.jpg" className="img-fluid item-img w-100 mb-3" />
@@ -204,14 +204,14 @@ export default function Trending() {
                                              </div>
                                           </div>
                                        </div>
-                                    </Link>
+                                    </div>
                                  </div>
                               </div>
                            </div>
                            <div className="col-6 col-md-3 mb-3">
                               <div className="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
                                  <div className="list-card-image">
-                                    <Link to='/productdetails' className="text-dark">
+                                    <div className="text-dark">
                                        <div className="member-plan position-absolute"><span className="badge m-3 badge-warning">15%</span></div>
                                        <div className="p-3">
                                           <img src="img/listing/v8.jpg" className="img-fluid item-img w-100 mb-3" />
@@ -232,14 +232,14 @@ export default function Trending() {
                                              </div>
                                           </div>
                                        </div>
-                                    </Link>
+                                    </div>
                                  </div>
                               </div>
                            </div>
                            <div className="col-6 col-md-3 mb-3">
                               <div className="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
                                  <div className="list-card-image">
-                                    <Link to='/productdetails' className="text-dark">
+                                    <div className="text-dark">
                                        <div className="member-plan position-absolute"><span className="badge m-3 badge-danger">5%</span></div>
                                        <div className="p-3">
                                           <img src="img/listing/v9.jpg" className="img-fluid item-img w-100 mb-3" />
@@ -255,14 +255,14 @@ export default function Trending() {
                                              </Link>
                                           </div>
                                        </div>
-                                    </Link>
+                                    </div>
                                  </div>
                               </div>
                            </div>
                            <div className="col-6 col-md-3 mb-3">
                               <div className="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
                                  <div className="list-card-image">
-                                    <Link to='/productdetails' className="text-dark">
+                                    <div className="text-dark">
                                        <div className="member-plan position-absolute"><span className="badge m-3 badge-danger">5%</span></div>
                                        <div className="p-3">
                                           <img src="img/listing/v10.jpg" className="img-fluid item-img w-100 mb-3" />
@@ -283,14 +283,14 @@ export default function Trending() {
                                              </div>
                                           </div>
                                        </div>
-                                    </Link>
+                                    </div>
                                  </div>
                               </div>
                            </div>
                            <div className="col-6 col-md-3 mb-3">
                               <div className="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
                                  <div className="list-card-image">
-                                    <Link to='/productdetails' className="text-dark">
+                                    <div className="text-dark">
                                        <div className="member-plan position-absolute"><span className="badge m-3 badge-success">10%</span></div>
                                        <div className="p-3">
                                           <img src="img/listing/v11.jpg" className="img-fluid item-img w-100 mb-3" />
@@ -311,14 +311,14 @@ export default function Trending() {
                                              </div>
                                           </div>
                                        </div>
-                                    </Link>
+                                    </div>
                                  </div>
                               </div>
                            </div>
                            <div className="col-6 col-md-3 mb-3">
                               <div className="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
                                  <div className="list-card-image">
-                                    <Link to='/productdetails' className="text-dark">
+                                    <div className="text-dark">
                                        <div className="member-plan position-absolute"><span className="badge m-3 badge-success">10%</span></div>
                                        <div className="p-3">
                                           <img src="img/listing/v12.jpg" className="img-fluid item-img w-100 mb-3" />
@@ -339,7 +339,7 @@ export default function Trending() {
                                              </div>
                                           </div>
                                        </div>
-                                    </Link>
+                                    </div>
                                  </div>
                               </div>
                            </div>
