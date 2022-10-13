@@ -1,10 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Theme from '../layout/Theme'
-import Carousel from 'react-grid-carousel'
+import Carousel from 'react-grid-carousel';
+import { useForm } from 'react-hook-form';
 
 
 export default function Register() {
+
+    const { register, handleSubmit, formState: { errors }, watch } = useForm({
+        mode: 'all'
+    });
     return (
         <>
             <Theme />
@@ -47,21 +52,29 @@ export default function Register() {
                                             <label htmlFor="exampleInputName1">Name</label>
                                             <input placeholder="Enter Name" type="text" className="form-control" id="exampleInputName1" aria-describedby="emailHelp" />
                                         </div>
-                                        <div className="form-group">
-                                            <label htmlFor="exampleInputNumber1">Phone Number</label>
-                                            <input placeholder="Enter Phone Number" type="number" className="form-control" id="exampleInputNumber1" aria-describedby="emailHelp" />
-                                        </div>
+
                                         <div className="form-group">
                                             <label htmlFor="exampleInputEmail1">Email</label>
-                                            <input placeholder="Enter Email" type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                                            <input placeholder="Enter Email" type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" {...register("email", { required: true, pattern: /^\S+@\S+$/i })} />
+                                            {errors.email && <span className='text-danger'>Enter a valid email</span>}
                                         </div>
                                         <div className="form-group">
                                             <label htmlFor="exampleInputPassword1">Password</label>
-                                            <input placeholder="Enter Password" type="password" className="form-control" id="exampleInputPassword1" />
+                                            <input placeholder="Enter Password" type="password" className="form-control" id="exampleInputPassword1" {...register("password", { required: true, minLength: 6, maxLength: 12 })} />
+                                            {errors.password && <span className='text-danger'>Enter a Password between 6 to 12 character</span>}
                                         </div>
                                         <div className="form-group">
                                             <label htmlFor="exampleInputPassword2">Confirmation Password</label>
-                                            <input placeholder="Enter Confirmation Password" type="password" className="form-control" id="exampleInputPassword2" />
+                                            <input placeholder="Enter Confirmation Password" name="confirmPwd" type="password" id="exampleInputPassword2"   {...register('confirmPwd', {
+                                                required: true, validate: (val) => {
+                                                    if (watch('password') != val) {
+                                                        return "Your passwords do no match";
+                                                    }
+                                                }
+                                            })}
+                                                className={`form-control ${errors.confirmPwd ? 'is-invalid' : ''}`}
+                                            />
+                                            {errors.confirmPwd && <span className='text-danger'>Your passwords do no match</span>}
                                         </div>
                                         <button type="submit" className="btn btn-success rounded btn-lg btn-block">Create Account</button>
                                     </form>

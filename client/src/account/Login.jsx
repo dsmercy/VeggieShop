@@ -1,12 +1,22 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Theme from '../layout/Theme'
-import Carousel from 'react-grid-carousel'
+import Carousel from 'react-grid-carousel';
+import { useForm } from 'react-hook-form';
 
 export default function Login() {
+
+
+    const { register, handleSubmit, formState: { errors } } = useForm({
+        mode: 'all'
+    });
+    const onSubmit = data => console.log(data);
+    //console.log(errors);
+
+
     return (
-        <>         
-          <Theme/>
+        <>
+            <Theme />
 
             <section className="osahan-main-body">
                 <div className="container">
@@ -42,14 +52,16 @@ export default function Login() {
                                 <div className="p-3">
                                     <h2 className="my-0">Welcome Back</h2>
                                     <p className="small mb-4">Sign in to Continue.</p>
-                                    <form action="https://askbootstrap.com/preview/vegishop/verification.html">
+                                    <form onSubmit={handleSubmit(onSubmit)}>
                                         <div className="form-group">
                                             <label htmlFor="exampleInputEmail1">Email</label>
-                                            <input placeholder="Enter Email" type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                                            <input placeholder="Enter Email" type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" {...register("email", { required: true, pattern: /^\S+@\S+$/i })} />
+                                            {errors.email && <span className='text-danger'>Enter a valid email</span>}
                                         </div>
                                         <div className="form-group">
                                             <label htmlFor="exampleInputPassword1">Password</label>
-                                            <input placeholder="Enter Password" type="password" className="form-control" id="exampleInputPassword1" />
+                                            <input placeholder="Enter Password" type="password" className="form-control" id="exampleInputPassword1" {...register("password", { required: true, minLength: 6, maxLength: 12 })} />
+                                            {errors.password && <span className='text-danger'>Enter a Password between 6 to 12 character</span>}
                                         </div>
                                         <button type="submit" className="btn btn-success rounded btn-lg btn-block">Sign In</button>
                                     </form>
