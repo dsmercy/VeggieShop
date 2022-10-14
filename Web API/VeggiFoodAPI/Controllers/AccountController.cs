@@ -43,13 +43,13 @@ namespace VeggiFoodAPI.Controllers
                        Role = role.Name,
                        Address = user.Address,
                    };
-            return Ok(data);
+            return Ok(_customResponse.GetResponseModel(null, data));
         }
 
         [HttpPost("register")]
         public async Task<ActionResult> Register([FromBody] RegisterModel register)
         {
-            //throw new Exception("The student cannot be found.");
+            //throw new Exception("The student cannot be found.");  
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = register.Username, Email = register.Email };
@@ -61,7 +61,7 @@ namespace VeggiFoodAPI.Controllers
                     await _userManager.AddToRoleAsync(user, "member");
                     return Ok(_customResponse.GetResponseModel(null, "User registered successfully"));
                 }
-                
+                  
                 return Conflict(_customResponse.GetResponseModel( result.Errors.Select(x => x.Description), null));
             }
             return BadRequest(_customResponse.GetResponseModel( ModelState.Values.SelectMany(v => v.Errors.Select(e => e.ErrorMessage)),null));
