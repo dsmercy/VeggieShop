@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Theme from '../layout/Theme'
 import Carousel from 'react-grid-carousel';
 import { useForm } from 'react-hook-form';
+import services from '../api/services';
 
 
 export default function Register() {
@@ -10,6 +11,38 @@ export default function Register() {
     const { register, handleSubmit, formState: { errors }, watch } = useForm({
         mode: 'all'
     });
+
+    const [errorsSummary, setErrorsSummary] = useState([]);
+
+
+    const onSubmit = data => {
+        // console.log('data', data);
+        services.Account.register(data).then(result => console.log(result))
+            .catch((error) => {
+                // Error
+                if (error.response) {
+                    // The request was made and the server responded with a status code
+                    // that falls out of the range of 2xx
+                    console.log(error.response.data);
+                    // setErrorsSummary(error.response.data.DuplicateUserName);
+                    setErrorsSummary(error.response.data.DuplicateEmail);
+                    // console.log(error.response.status);
+                    // console.log(error.response.headers);
+                } else if (error.request) {
+                    // The request was made but no response was received
+                    // `error.request` is an instance of XMLHttpRequest in the 
+                    // browser and an instance of
+                    // http.ClientRequest in node.js
+                    console.log(error.request);
+                } else {
+                    // Something happened in setting up the request that triggered an Error
+                    console.log('Error', error.message);
+                }
+                // console.log(error.config);
+            });;
+    };
+
+
     return (
         <>
             <Theme />
@@ -47,10 +80,13 @@ export default function Register() {
                                 <div className="p-3">
                                     <h2 className="my-0">Let's get started</h2>
                                     <p className="small mb-4">Create account to see our top picks for you!</p>
-                                    <form action="https://askbootstrap.com/preview/vegishop/verification.html">
+                                    <span id='errorSummary' className='text-danger'>{errorsSummary}</span>
+
+                                    <form onSubmit={handleSubmit(onSubmit)}>
                                         <div className="form-group">
                                             <label htmlFor="exampleInputName1">Name</label>
-                                            <input placeholder="Enter Name" type="text" className="form-control" id="exampleInputName1" aria-describedby="emailHelp" />
+                                            <input placeholder="Enter Name" type="text" className="form-control" id="exampleInputName1" aria-describedby="emailHelp" {...register("username", { required: true })} />
+                                            {errors.username && <span className='text-danger'>Username required</span>}
                                         </div>
 
                                         <div className="form-group">

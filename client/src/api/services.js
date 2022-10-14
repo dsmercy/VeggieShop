@@ -1,55 +1,55 @@
 import axios from "axios";
 
-axios.defaults.baseURL = 'http://localhost:5000/api/';
-axios.defaults.withCredentials=true;
+axios.defaults.baseURL = 'http://dsmercy10-001-site1.dtempurl.com/api/';
+axios.defaults.withCredentials = true;
 
 const responseBody = (response) => response.data;
 
 const sleep = () => new Promise(resolve => setTimeout(resolve, 300));
 
-axios.interceptors.request.use(config => {
-    const token = store.getState().account.user?.token;
-    if (token) config.headers.Authorization = `Bearer ${token}`;
-    return config;
-})
+// axios.interceptors.request.use(config => {
+//     const token = store.getState().account.user?.token;
+//     if (token) config.headers.Authorization = `Bearer ${token}`;
+//     return config;
+// })
 
-axios.interceptors.response.use(async response => {
-    return response;
-}, (error) => {
-    const { data, status } = error.response;
-    switch (status) {
-        case 400:
-            if (data.errors) {
-                const modelStateErrors = [];
-                for (const key in data.errors) {
-                    if (data.errors[key]) {
-                        modelStateErrors.push(data.errors[key])
-                    }
-                }
-                throw modelStateErrors.flat();
-            }
-            toast.error(data.title);
-            break;
-        case 401:
-            toast.error(data.title);
-            break;
-        case 404:
-            toast.error(data.title);
-            break;
-        case 500:
-            history.push({
-                pathname: '/server-error',
-                state: {error: data}
-            });
-            break;
-        default:
-            break;
-    }
-    return Promise.reject(error.response);
-})
+// axios.interceptors.response.use(async response => {
+//     return response;
+// }, (error) => {
+//     const { data, status } = error.response;
+//     switch (status) {
+//         case 400:
+//             if (data.errors) {
+//                 const modelStateErrors = [];
+//                 for (const key in data.errors) {
+//                     if (data.errors[key]) {
+//                         modelStateErrors.push(data.errors[key])
+//                     }
+//                 }
+//                 throw modelStateErrors.flat();
+//             }
+//             toast.error(data.title);
+//             break;
+//         case 401:
+//             toast.error(data.title);
+//             break;
+//         case 404:
+//             toast.error(data.title);
+//             break;
+//         case 500:
+//             history.push({
+//                 pathname: '/server-error',
+//                 state: {error: data}
+//             });
+//             break;
+//         default:
+//             break;
+//     }
+//     return Promise.reject(error.response);
+// })
 
 const requests = {
-    get: (url, params) => axios.get(url, {params}).then(responseBody),
+    get: (url, params) => axios.get(url, { params }).then(responseBody),
     post: (url, body) => axios.post(url, body).then(responseBody),
     put: (url, body) => axios.put(url, body).then(responseBody),
     delete: (url) => axios.delete(url).then(responseBody),
