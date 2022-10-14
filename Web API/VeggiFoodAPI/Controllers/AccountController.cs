@@ -7,6 +7,7 @@ using NuGet.Common;
 using System.Net.Mime;
 using VeggiFoodAPI.Data;
 using VeggiFoodAPI.Extentions;
+using VeggiFoodAPI.Helpers;
 using VeggiFoodAPI.Models;
 using VeggiFoodAPI.Models.DTOs;
 using VeggiFoodAPI.Models.ViewModels;
@@ -21,8 +22,7 @@ namespace VeggiFoodAPI.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly ApplicationDbContext _context;
         private readonly TokenService _tokenService;
-        ResponseModel responseModel = new ResponseModel();
-
+        CustomResponse _customResponse = new CustomResponse();
         public AccountController(UserManager<ApplicationUser> userManager, ApplicationDbContext context, TokenService tokenService)
         {
             _userManager = userManager;
@@ -50,7 +50,6 @@ namespace VeggiFoodAPI.Controllers
         public async Task<ActionResult> Register([FromBody] RegisterModel register)
         {
             //throw new Exception("The student cannot be found.");
-            responseModel.Errors = new List<string>();
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = register.Username, Email = register.Email };
@@ -60,21 +59,12 @@ namespace VeggiFoodAPI.Controllers
                 if (result.Succeeded)
                 {
                     await _userManager.AddToRoleAsync(user, "member");
-                    responseModel.Success = true;
-                    responseModel.Data = "User registered successfully";
-                    return Ok(responseModel);
+                    return Ok(_customResponse.GetResponseModel(null, "User registered successfully"));
                 }
                 
-                foreach (var error in result.Errors)
-                {
-                    responseModel.Errors.Add(error.Description);
-                }
-                responseModel.Success = false;
-                return Conflict(responseModel);
+                return Conflict(_customResponse.GetResponseModel( result.Errors.Select(x => x.Description), null));
             }
-            responseModel.Success = false;
-            responseModel.Errors.AddRange(ModelState.Values.SelectMany(v => v.Errors.Select(e => e.ErrorMessage)));
-            return BadRequest(responseModel);
+            return BadRequest(_customResponse.GetResponseModel( ModelState.Values.SelectMany(v => v.Errors.Select(e => e.ErrorMessage)),null));
         }
 
         [HttpPost("login")]
@@ -85,7 +75,9 @@ namespace VeggiFoodAPI.Controllers
                 var currentUser = await _userManager.FindByNameAsync(loginDto.Username);
 
                 if (currentUser == null || !await _userManager.CheckPasswordAsync(currentUser, loginDto.Password))
-                    return Unauthorized();
+                {
+                    return Unauthorized(_customResponse.GetResponseModel( new string[] { "Invalid Credentials" }, null));
+                }
 
                 string token = await _tokenService.GenerateToken(currentUser);
 
@@ -100,9 +92,10 @@ namespace VeggiFoodAPI.Controllers
                                       Token = token
                                   };
 
-                return Ok(userDetails.FirstOrDefault());
+                return Ok(_customResponse.GetResponseModel(null, userDetails.FirstOrDefault()));
             }
-            return BadRequest(ModelState);
+
+            return BadRequest(_customResponse.GetResponseModel( ModelState.Values.SelectMany(v => v.Errors.Select(e => e.ErrorMessage)),null));
         }
 
     }
