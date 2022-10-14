@@ -1,10 +1,16 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using CloudinaryDotNet.Actions;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
+using NuGet.Common;
 using System.Net.Mime;
 using VeggiFoodAPI.Data;
+using VeggiFoodAPI.Extentions;
+using VeggiFoodAPI.Models;
 using VeggiFoodAPI.Models.DTOs;
 using VeggiFoodAPI.Models.ViewModels;
+using VeggiFoodAPI.RequestHelpers;
 using VeggiFoodAPI.Services;
 
 namespace VeggiFoodAPI.Controllers
@@ -15,6 +21,7 @@ namespace VeggiFoodAPI.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly ApplicationDbContext _context;
         private readonly TokenService _tokenService;
+        ResponseModel responseModel = new ResponseModel();
 
         public AccountController(UserManager<ApplicationUser> userManager, ApplicationDbContext context, TokenService tokenService)
         {
@@ -23,10 +30,27 @@ namespace VeggiFoodAPI.Controllers
             _tokenService = tokenService;
         }
 
-        [HttpPost("Register")]
+        [HttpGet("allusers")]
+        public ActionResult<List<UserDetails>> GetAllUsers()
+        {
+            var data = from role in _context.Roles
+                   join userRole in _context.UserRoles on role.Id equals userRole.RoleId
+                   join user in _context.Users on userRole.UserId equals user.Id
+                   select new UserDetails
+                   {
+                       Email = user.Email,
+                       Username = user.UserName,
+                       Role = role.Name,
+                       Address = user.Address,
+                   };
+            return Ok(data);
+        }
+
+        [HttpPost("register")]
         public async Task<ActionResult> Register([FromBody] RegisterModel register)
         {
             //throw new Exception("The student cannot be found.");
+            responseModel.Errors = new List<string>();
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = register.Username, Email = register.Email };
@@ -35,18 +59,22 @@ namespace VeggiFoodAPI.Controllers
 
                 if (result.Succeeded)
                 {
-                    await _userManager.AddToRoleAsync(user, "Admin");
-                    return Ok("User registered successfully");
+                    await _userManager.AddToRoleAsync(user, "member");
+                    responseModel.Success = true;
+                    responseModel.Data = "User registered successfully";
+                    return Ok(responseModel);
                 }
-
+                
                 foreach (var error in result.Errors)
                 {
-                    ModelState.AddModelError(error.Code, error.Description);
+                    responseModel.Errors.Add(error.Description);
                 }
-                return Conflict(ModelState);
+                responseModel.Success = false;
+                return Conflict(responseModel);
             }
-
-            return BadRequest(ModelState);
+            responseModel.Success = false;
+            responseModel.Errors.AddRange(ModelState.Values.SelectMany(v => v.Errors.Select(e => e.ErrorMessage)));
+            return BadRequest(responseModel);
         }
 
         [HttpPost("login")]

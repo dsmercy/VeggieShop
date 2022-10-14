@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Data;
 using VeggiFoodAPI.Data;
 using VeggiFoodAPI.Extentions;
+using VeggiFoodAPI.Models;
 using VeggiFoodAPI.Models.DTOs;
 using VeggiFoodAPI.Models.ViewModels;
 using VeggiFoodAPI.RequestHelpers;
@@ -18,6 +19,7 @@ namespace VeggiFoodAPI.Controllers
         private readonly ApplicationDbContext _context;
         private readonly IMapper _mapper;
         private readonly ImageService _imageService;
+        ResponseModel responseModel = new ResponseModel();
         public ProductsController(ApplicationDbContext context, IMapper mapper, ImageService imageService)
         {
             _imageService = imageService;
