@@ -229,7 +229,7 @@ body {
 }
 
 .right-modal .modal-dialog .modal-content .modal-body {
-	height: calc(100vh - 109px);
+	height: calc(100vh - 10px);
 }
 
 .dropdown:hover .dropdown-menu {

@@ -13,10 +13,10 @@ export default function Trending() {
                      <div className="osahan-listing">
                         <div className="d-flex align-items-center mb-3">
                            <h4>Pick's Today</h4>
-                           <div className="m-0 text-center ml-auto">
+                           {/* <div className="m-0 text-center ml-auto">
                               <Link to='/'  data-toggle="modal" data-target="#exampleModal" className="btn text-muted bg-white mr-2"><i className="icofont-filter mr-1"></i> Filter</Link>
                               <Link to='/'  data-toggle="modal" data-target="#exampleModal" className="btn text-muted bg-white"><i className="icofont-signal mr-1"></i> Sort</Link>
-                           </div>
+                           </div> */}
                         </div>
                         <div className="row">
                            <div className="col-6 col-md-3 mb-3">
@@ -29,17 +29,7 @@ export default function Trending() {
                                           <h6>Chilli</h6>
                                           <div className="d-flex align-items-center">
                                              <h6 className="price m-0 text-success">$0.8/kg</h6>
-                                             {/* <button to='/'  className="btn btn-success btn-sm ml-auto">Add to Cart</button> */}
-                                             <Button variant="primary" className="btn btn-success btn-sm ml-auto">
-                                                <Spinner
-                                                   as="span"
-                                                   animation="grow"
-                                                   size="sm"
-                                                   role="status"
-                                                   aria-hidden="true"
-                                                />
-                                                Adding...
-                                             </Button>
+                                             <button to='/'  className="btn btn-success btn-sm ml-auto">Add to Cart</button>
                                           </div>
                                        </div>
                                     </div>

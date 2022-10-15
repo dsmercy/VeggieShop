@@ -4,6 +4,7 @@ import Header from '../layout/Header';
 import Footer from '../layout/Footer';
 import Theme from '../layout/Theme';
 import ProductCard from '../components/ProductCard'
+import Filter from "../components/Filter";
 
 
 
@@ -18,6 +19,11 @@ export default function ProductsList() {
         { id: "7", name: "chilli", description: "Fresh Chilli from farmms", price: "1$", pictureUrl: "img/listing/v7.jpg", },
         { id: "8", name: "Onion", description: "Fresh Onion from farmms", price: "$1.8/kg", pictureUrl: "img/listing/v2.jpg" }
     ]);
+
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     // set default theme
     useEffect(() => {
@@ -35,14 +41,13 @@ export default function ProductsList() {
                                 <div className="d-flex align-items-center mb-3">
                                     <h4>All Products</h4>
                                     <div className="m-0 text-center ml-auto">
-                                        <Link to='/'  data-toggle="modal" data-target="#exampleModal" className="btn text-muted bg-white mr-2"><i className="icofont-filter mr-1"></i> Filter</Link>
-                                        <Link to='/'  data-toggle="modal" data-target="#exampleModal" className="btn text-muted bg-white"><i className="icofont-signal mr-1"></i> Sort</Link>
+                                        <button  onClick={handleShow} className="btn text-muted bg-white mr-2"><i className="icofont-filter mr-1"></i> Filter</button>
                                     </div>
                                 </div>
                                 <div className="row">
 
-                                    {products.map(product => (
-                                        <ProductCard product={product} />
+                                    {products.slice(0,8).map(product => (
+                                        <ProductCard product={product} key={product.id}/>
                                     ))}
                                 </div>
                             </div>
@@ -50,7 +55,7 @@ export default function ProductsList() {
                     </div>
                 </div>
             </section>
-
+<Filter handleClose={handleClose} handleShow={handleShow} show={show}/>
         </>
     )
 }

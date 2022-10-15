@@ -19,7 +19,7 @@ const addtoCart=()=>{
 
     return (
         <>
-            <div className="col-6 col-md-3 mb-3">
+            <div className="col-6 col-md-3 mb-3" >
                 <div className="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
                     <div className="list-card-image">
                         <div className="text-dark">
