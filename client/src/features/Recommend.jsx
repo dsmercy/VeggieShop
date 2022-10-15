@@ -1,7 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import Button from 'react-bootstrap/Button';
+import Spinner from 'react-bootstrap/Spinner';
 
 export default function Recommend() {
+
+    const [loading,setLoading] = useState(false);
+    const [recomendedProducts, setRecomendedProducts] = useState([
+        { id: "1", name: "Fresh Orange", description: "Orange Great Quality item from Jamaica.", price: "5.0", pictureUrl: "img/recommend/r2.jpg" },
+        { id: "2", name: "Green Apple", description: "Green Apple Premium item from Vietnam.", price: "4.0", pictureUrl: "img/recommend/r4.jpg" },
+        { id: "3", name: "Fresh Apple", description: "Fresh Apple Premium item from Thailand.", price: "4.5", pictureUrl: "img/recommend/r7.jpg" },
+    ]);
+
+    const addtoCart=()=>{
+        setLoading(true);
+        setTimeout(function(){setLoading(false)},2000);
+    }
+
     return (
         <>
             <div className="title d-flex align-items-center py-3">
@@ -11,85 +26,28 @@ export default function Recommend() {
 
             <div className="osahan-recommend">
                 <div className="row">
-                    <div className="col-12 col-md-4 mb-3">
-                        <div className="text-dark text-decoration-none">
-                            <div className="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
-                                <div className="recommend-slider2 rounded mb-0">
-                                    <div className="osahan-slider-item m-2 rounded">
-                                        <img src="img/recommend/r3.jpg" className="img-fluid mx-auto rounded shadow-sm" alt="Responsive image" />
+                    {recomendedProducts.map(product => (
+                        <div className="col-12 col-md-4 mb-3">
+                            <div className="text-dark text-decoration-none">
+                                <div className="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+                                    <div className="recommend-slider2 rounded mb-0">
+                                        <div className="osahan-slider-item m-2 rounded">
+                                            <img src={product.pictureUrl} className="img-fluid mx-auto rounded shadow-sm" alt="Responsive image" />
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="p-3 position-relative">
-                                    <h6 className="mb-1 font-weight-bold text-success">
-                                        Fresh Orange
-                                    </h6>
-                                    <p className="text-muted">Orange Great Quality item from Jamaica.</p>
-                                    <div className="d-flex align-items-center">
-                                        <h6 className="m-0">$8.8/kg</h6>
-                                        <Link to='/' className="ml-auto" href="#">
-                                            <form id='myform' className="cart-items-number d-flex" method='POST' action='#'>
-                                                <input type='button' defaultValue='-' className='qtyminus btn btn-success btn-sm' />
-                                                <input type='text' name='quantity' defaultValue='1' className='qty form-control' />
-                                                <input type='button' defaultValue='+' className='qtyplus btn btn-success btn-sm' />
-                                            </form>
-                                        </Link>
+                                    <div className="p-3 position-relative">
+                                        <h6 className="mb-1 font-weight-bold text-success">
+                                            {product.name}
+                                        </h6>
+                                        <p className="text-muted">{product.description}</p>
+                                        <div className="d-flex align-items-center">
+                                            <h6 className="m-0">${product.price}/kg</h6>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="col-12 col-md-4 mb-3">
-                        <div className="text-dark text-decoration-none">
-                            <div className="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
-                                <div className="recommend-slider2 rounded mb-0">
-                                    <div className="osahan-slider-item m-2">
-                                        <img src="img/recommend/r6.jpg" className="img-fluid mx-auto rounded shadow-sm" alt="Responsive image" />
-                                    </div>
-                                </div>
-                                <div className="p-3 position-relative">
-                                    <h6 className="mb-1 font-weight-bold text-success">Green Apple</h6>
-                                    <p className="text-muted">Green Apple Premium item from Vietnam.</p>
-                                    <div className="d-flex align-items-center">
-                                        <h6 className="m-0">$10.8/kg</h6>
-                                        <Link to='/' className="ml-auto" href="#">
-                                            <form id='myform' className="cart-items-number d-flex" method='POST' action='#'>
-                                                <input type='button' defaultValue='-' className='qtyminus btn btn-success btn-sm' />
-                                                <input type='text' name='quantity' defaultValue='1' className='qty form-control' />
-                                                <input type='button' defaultValue='+' className='qtyplus btn btn-success btn-sm' />
-                                            </form>
-                                        </Link>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-12 col-md-4 mb-3">
-                        <div className="text-dark text-decoration-none">
-                            <div className="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
-                                <div className="recommend-slider2 rounded mb-0">
-                                    <div className="osahan-slider-item m-2">
-                                        <img src="img/recommend/r9.jpg" className="img-fluid mx-auto rounded shadow-sm" alt="Responsive image" />
-                                    </div>
-                                </div>
-                                <div className="p-3 position-relative">
-                                    <h6 className="mb-1 font-weight-bold text-success">
-                                        Fresh Apple
-                                    </h6>
-                                    <p className="text-muted">Fresh Apple Premium item from Thailand.</p>
-                                    <div className="d-flex align-items-center">
-                                        <h6 className="m-0">$12.8/kg</h6>
-                                        <Link to='/' className="ml-auto" href="#">
-                                            <form id='myform' className="cart-items-number d-flex" method='POST' action='#'>
-                                                <input type='button' defaultValue='-' className='qtyminus btn btn-success btn-sm' />
-                                                <input type='text' name='quantity' defaultValue='1' className='qty form-control' />
-                                                <input type='button' defaultValue='+' className='qtyplus btn btn-success btn-sm' />
-                                            </form>
-                                        </Link>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    ))}
                 </div>
             </div>
         </>

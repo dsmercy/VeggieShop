@@ -124,8 +124,9 @@ export default function Home() {
                     </div>
                 </div>
 
-                <Link to='/' className="ml-2 text-dark bg-light rounded-pill p-2 icofont-size border shadow-sm">
+                <Link to='/cart' className="ml-2 text-dark bg-light rounded-pill p-2 icofont-size border shadow-sm">
                     <i className="icofont-shopping-cart"></i>
+                    <span className='badge text-dark' id='lblCartCount'> 5 </span>
                 </Link>
             </div>
         </nav>
@@ -163,8 +164,7 @@ export default function Home() {
                 </ul>
                 <div className="list-unstyled form-inline mb-0 ml-auto">
                     {/* <Link to="/trending" className="text-white px-3 py-2" >Trending</Link> */}
-                    <Link to="/register" className="text-white bg-offer px-3 py-2"><i
-                            className="icofont-sale-discount h6"></i>Sign Up</Link>
+                    <Link to="/register" className="text-white bg-offer px-3 py-2">Sign Up</Link>
                 </div>
             </div>
         </div>

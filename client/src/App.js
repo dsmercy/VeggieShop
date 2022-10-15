@@ -5,8 +5,10 @@ import Register from './account/Register';
 import './App.css';
 import Privacy from './components/Privacy';
 import Trending from './components/Trending';
+import Basket from './features/Basket';
 
 import Home from './features/Home';
+import ProductDetails from './features/ProductDetails';
 import ProductsList from './features/ProductsList';
 import CustomerLayout from './layout/CustomerLayout';
 
@@ -26,6 +28,8 @@ function App() {
           <Route path='/productslist' element={<ProductsList />} />
           <Route path='/trending' element={<Trending />} />
           <Route path='/privacy' element={<Privacy />} />
+          <Route path='/productdetails' element={<ProductDetails />} />
+          <Route path='/cart' element={<Basket />} />
           {/* <Route path="*" element={<NoMatch />} /> */}
         </Route>
         <Route path='/login' element={<Login />} />
