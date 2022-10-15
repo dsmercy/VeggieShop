@@ -5,6 +5,8 @@ using Microsoft.EntityFrameworkCore;
 using System.Data;
 using VeggiFoodAPI.Data;
 using VeggiFoodAPI.Extentions;
+using VeggiFoodAPI.Helpers;
+using VeggiFoodAPI.Migrations;
 using VeggiFoodAPI.Models;
 using VeggiFoodAPI.Models.DTOs;
 using VeggiFoodAPI.Models.ViewModels;
@@ -19,7 +21,7 @@ namespace VeggiFoodAPI.Controllers
         private readonly ApplicationDbContext _context;
         private readonly IMapper _mapper;
         private readonly ImageService _imageService;
-        ResponseModel responseModel = new ResponseModel();
+        CustomResponse _customResponse = new CustomResponse();
         public ProductsController(ApplicationDbContext context, IMapper mapper, ImageService imageService)
         {
             _imageService = imageService;
@@ -41,7 +43,7 @@ namespace VeggiFoodAPI.Controllers
 
             Response.AddPaginationHeader(products.MetaData);
 
-            return products;
+            return Ok(_customResponse.GetResponseModel(null, products));
         }
 
         [HttpGet("{id}", Name = "GetProduct")]
@@ -51,7 +53,7 @@ namespace VeggiFoodAPI.Controllers
 
             if (product == null) return NotFound();
 
-            return product;
+            return Ok(_customResponse.GetResponseModel(null, product));
         }
 
         [HttpGet("filters")]
@@ -60,40 +62,46 @@ namespace VeggiFoodAPI.Controllers
             var brands = await _context.Products.Select(p => p.Brand).Distinct().ToListAsync();
             var types = await _context.Products.Select(p => p.Type).Distinct().ToListAsync();
 
-            return Ok(new { brands, types });
+            return Ok(_customResponse.GetResponseModel(null, new { brands, types }));
         }
 
         [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<ActionResult<Product>> CreateProduct([FromForm] CreateProductModel productDto)
         {
-            var product = _mapper.Map<Product>(productDto);
-
-            if (productDto.File != null)
+            if (ModelState.IsValid)
             {
-                var imageResult = await _imageService.AddImageAsync(productDto.File);
+                var product = _mapper.Map<Product>(productDto);
 
-                if (imageResult.Error != null)
-                    return BadRequest(new ProblemDetails { Title = imageResult.Error.Message });
+                if (productDto.File != null)
+                {
+                    var imageResult = await _imageService.AddImageAsync(productDto.File);
 
-                product.PictureUrl = imageResult.SecureUrl.ToString();
-                product.PublicId = imageResult.PublicId;
+                    if (imageResult.Error != null)
+                        return BadRequest(new ProblemDetails { Title = imageResult.Error.Message });
+
+                    product.PictureUrl = imageResult.SecureUrl.ToString();
+                    product.PublicId = imageResult.PublicId;
+                }
+
+                _context.Products.Add(product);
+
+                var result = await _context.SaveChangesAsync() > 0;
+
+                if (result) return CreatedAtRoute("GetProduct", new { Id = product.Id }, product);
+                return BadRequest(_customResponse.GetResponseModel(new string[] { "Problem creating new product" }, null));
             }
+            return BadRequest(_customResponse.GetResponseModel(ModelState.Values.SelectMany(v => v.Errors.Select(e => e.ErrorMessage)), null));
 
-            _context.Products.Add(product);
-
-            var result = await _context.SaveChangesAsync() > 0;
-
-            if (result) return CreatedAtRoute("GetProduct", new { Id = product.Id }, product);
-
-            return BadRequest(new ProblemDetails { Title = "Problem creating new product" });
         }
 
         [Authorize(Roles = "Admin")]
         [HttpPut]
         public async Task<ActionResult<Product>> UpdateProduct([FromForm] UpdateProductModel productDto)
         {
-            var product = await _context.Products.FindAsync(productDto.Id);
+            if (ModelState.IsValid)
+            {
+                var product = await _context.Products.FindAsync(productDto.Id);
 
             if (product == null) return NotFound();
 
@@ -117,7 +125,10 @@ namespace VeggiFoodAPI.Controllers
 
             if (result) return Ok(product);
 
-            return BadRequest(new ProblemDetails { Title = "Problem updating product" });
+                return BadRequest(_customResponse.GetResponseModel(new string[] { "Problem updating product" }, null));
+            }
+            return BadRequest(_customResponse.GetResponseModel(ModelState.Values.SelectMany(v => v.Errors.Select(e => e.ErrorMessage)), null));
+
         }
 
         [Authorize(Roles = "Admin")]
@@ -126,7 +137,7 @@ namespace VeggiFoodAPI.Controllers
         {
             var product = await _context.Products.FindAsync(id);
 
-            if (product == null) return NotFound();
+            if (product == null) return NotFound(_customResponse.GetResponseModel(new string[] { "Product not found" }, null));
 
             if (!string.IsNullOrEmpty(product.PublicId))
                 await _imageService.DeleteImageAsync(product.PublicId);
@@ -135,7 +146,7 @@ namespace VeggiFoodAPI.Controllers
 
             var result = await _context.SaveChangesAsync() > 0;
 
-            if (result) return Ok();
+            if (result) return Ok(_customResponse.GetResponseModel(null,"Product deleted"));
 
             return BadRequest(new ProblemDetails { Title = "Problem deleting product" });
         }

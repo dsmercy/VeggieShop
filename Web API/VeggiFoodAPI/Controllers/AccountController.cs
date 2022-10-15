@@ -1,4 +1,5 @@
 ﻿using GAMBULL_GAMC.UTILITY.Logger;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using VeggiFoodAPI.Data;
@@ -25,6 +26,7 @@ namespace VeggiFoodAPI.Controllers
             _tokenService = tokenService;
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet("allusers")]
         public ActionResult<List<UserDetails>> GetAllUsers()
         {
