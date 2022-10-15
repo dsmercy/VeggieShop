@@ -1,5 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Button from 'react-bootstrap/Button';
+import Spinner from 'react-bootstrap/Spinner';
 
 export default function Trending() {
    return (
@@ -27,18 +29,17 @@ export default function Trending() {
                                           <h6>Chilli</h6>
                                           <div className="d-flex align-items-center">
                                              <h6 className="price m-0 text-success">$0.8/kg</h6>
-                                             <Link to='/' data-toggle="collapse" href="#collapseExample1" role="button" aria-expanded="false" aria-controls="collapseExample1" className="btn btn-success btn-sm ml-auto">+</Link>
-                                             <div className="collapse qty_show" id="collapseExample1">
-                                                <div>
-                                                   <span className="ml-auto" >
-                                                      <form id='myform' className="cart-items-number d-flex" method='POST' action='#'>
-                                                         <input type='button' defaultValue='-' className='qtyminus btn btn-success btn-sm' />
-                                                         <input type='text' name='quantity' defaultValue='1' className='qty form-control' />
-                                                         <input type='button' defaultValue='+' className='qtyplus btn btn-success btn-sm' />
-                                                      </form>
-                                                   </span>
-                                                </div>
-                                             </div>
+                                             {/* <button to='/'  className="btn btn-success btn-sm ml-auto">Add to Cart</button> */}
+                                             <Button variant="primary" className="btn btn-success btn-sm ml-auto">
+                                                <Spinner
+                                                   as="span"
+                                                   animation="grow"
+                                                   size="sm"
+                                                   role="status"
+                                                   aria-hidden="true"
+                                                />
+                                                Adding...
+                                             </Button>
                                           </div>
                                        </div>
                                     </div>
@@ -55,18 +56,7 @@ export default function Trending() {
                                           <h6>Onion</h6>
                                           <div className="d-flex align-items-center">
                                              <h6 className="price m-0 text-success">$1.8/kg</h6>
-                                             <Link to='/' data-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample2" className="btn btn-success btn-sm ml-auto">+</Link>
-                                             <div className="collapse qty_show" id="collapseExample2">
-                                                <div>
-                                                   <span className="ml-auto" >
-                                                      <form id='myform' className="cart-items-number d-flex" method='POST' action='#'>
-                                                         <input type='button' defaultValue='-' className='qtyminus btn btn-success btn-sm' />
-                                                         <input type='text' name='quantity' defaultValue='1' className='qty form-control' />
-                                                         <input type='button' defaultValue='+' className='qtyplus btn btn-success btn-sm' />
-                                                      </form>
-                                                   </span>
-                                                </div>
-                                             </div>
+                                             <button to='/'  className="btn btn-success btn-sm ml-auto">Add to Cart</button>
                                           </div>
                                        </div>
                                     </div>

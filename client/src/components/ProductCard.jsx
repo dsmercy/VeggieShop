@@ -1,14 +1,20 @@
-import React, { useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import Button from 'react-bootstrap/Button';
+import Spinner from 'react-bootstrap/Spinner';
 
 export default function ProductCard({ product }) {
 
-
+const [loading,setLoading] = useState(false);
 
     // set default theme
     // useEffect(() => {
     //     console.log(product);
     // }, [product]);
+
+const addtoCart=()=>{
+    setLoading(true);
+    setTimeout(function(){setLoading(false)},2000);
+}
 
 
     return (
@@ -23,18 +29,17 @@ export default function ProductCard({ product }) {
                                 <h6>{product.name}</h6>
                                 <div className="d-flex align-items-center">
                                     <h6 className="price m-0 text-success">${product.price}/kg</h6>
-                                    <Link to='/' data-toggle="collapse" href="#collapseExample1" role="button" aria-expanded="false" aria-controls="collapseExample1" className="btn btn-success btn-sm ml-auto">+</Link>
-                                    <div className="collapse qty_show" id="collapseExample1">
-                                        <div>
-                                            <span className="ml-auto" >
-                                                <form id='myform' className="cart-items-number d-flex" method='POST' action='#'>
-                                                    <input type='button' defaultValue='-' className='qtyminus btn btn-success btn-sm' />
-                                                    <input type='text' name='quantity' defaultValue='1' className='qty form-control' />
-                                                    <input type='button' defaultValue='+' className='qtyplus btn btn-success btn-sm' />
-                                                </form>
-                                            </span>
-                                        </div>
-                                    </div>
+                                    {!loading?<button to='/'  className="btn btn-success btn-sm ml-auto" onClick={addtoCart}>Add to Cart</button>
+                                    :<Button variant="primary" className="btn btn-success btn-sm ml-auto">
+                                                <Spinner
+                                                   as="span"
+                                                   animation="grow"
+                                                   size="sm"
+                                                   role="status"
+                                                   aria-hidden="true"
+                                                />
+                                                Adding...
+                                             </Button>}
                                 </div>
                             </div>
                         </div>

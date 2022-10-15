@@ -25,7 +25,7 @@ namespace GAMBULL_GAMC.UTILITY.Logger
             errorTrace.AppendLine("InnerException - " + objExceptionModel.InnerException);
             errorTrace.AppendLine("StackTrace - " + objExceptionModel.StackTrace);
             errorTrace.AppendLine("Data - " + objExceptionModel.Data);
-            errorTrace.AppendLine("=========================================+====End====================================================");
+            errorTrace.AppendLine("=============================================End====================================================");
             Log.Error(errorTrace);
         }
         public void WriteTrace(RouteValueDictionary routeData, StringBuilder parameterList, string v)

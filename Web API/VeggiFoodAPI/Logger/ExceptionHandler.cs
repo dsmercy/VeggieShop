@@ -35,15 +35,6 @@ namespace VeggiFoodAPI.Logger
                 _LogHandler.WriteError(exceptionDetails);
 
 
-
-                ///return response
-                //var response = new ProblemDetails
-                //{
-                //    Status = 500,
-                //    Detail = _env.IsDevelopment() ? ex.StackTrace?.ToString() : null,
-                //    Title = ex.Message
-                //};
-
                 CustomResponse _customResponse = new CustomResponse();
 
                 _customResponse.GetResponseModel(new string[] { ex.Message }, _env.IsDevelopment() ? ex.StackTrace?.ToString() : null);
