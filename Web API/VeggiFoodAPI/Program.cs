@@ -10,6 +10,9 @@ using VeggiFoodAPI.RequestHelpers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using log4net.Config;
+using log4net;
+using System.Reflection;
 
 namespace VeggiFoodAPI
 {
@@ -30,6 +33,11 @@ namespace VeggiFoodAPI
 
         private static void AddServices(WebApplicationBuilder builder)
         {
+            // start logger configuration
+            var logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
+            XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
+            // End logger configuration
+
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();

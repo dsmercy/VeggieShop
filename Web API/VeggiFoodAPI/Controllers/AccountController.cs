@@ -1,22 +1,17 @@
-﻿using CloudinaryDotNet.Actions;
+﻿using GAMBULL_GAMC.UTILITY.Logger;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
-using Microsoft.EntityFrameworkCore;
-using NuGet.Common;
-using System.Net.Mime;
 using VeggiFoodAPI.Data;
-using VeggiFoodAPI.Extentions;
 using VeggiFoodAPI.Helpers;
-using VeggiFoodAPI.Models;
 using VeggiFoodAPI.Models.DTOs;
 using VeggiFoodAPI.Models.ViewModels;
-using VeggiFoodAPI.RequestHelpers;
 using VeggiFoodAPI.Services;
 
 namespace VeggiFoodAPI.Controllers
 {
+
     [Route("api/account")]
+    [LogAttribute]
     public class AccountController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
@@ -49,7 +44,7 @@ namespace VeggiFoodAPI.Controllers
         [HttpPost("register")]
         public async Task<ActionResult> Register([FromBody] RegisterModel register)
         {
-            //throw new Exception("The student cannot be found.");  
+            //throw new Exception("The student cannot be found.");
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = register.Username, Email = register.Email };

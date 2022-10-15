@@ -1,6 +1,7 @@
 ﻿using GAMBULL_GAMC.UTILITY.Logger;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
+using VeggiFoodAPI.Helpers;
 using VeggiFoodAPI.Models.ViewModels;
 
 namespace VeggiFoodAPI.Logger
@@ -36,12 +37,16 @@ namespace VeggiFoodAPI.Logger
 
 
                 ///return response
-                var response = new ProblemDetails
-                {
-                    Status = 500,
-                    Detail = _env.IsDevelopment() ? ex.StackTrace?.ToString() : null,
-                    Title = ex.Message
-                };
+                //var response = new ProblemDetails
+                //{
+                //    Status = 500,
+                //    Detail = _env.IsDevelopment() ? ex.StackTrace?.ToString() : null,
+                //    Title = ex.Message
+                //};
+
+                CustomResponse _customResponse = new CustomResponse();
+
+                _customResponse.GetResponseModel(new string[] { ex.Message }, _env.IsDevelopment() ? ex.StackTrace?.ToString() : null);
 
                 context.Response.ContentType = "application/json";
                 context.Response.StatusCode = 500;
@@ -52,7 +57,7 @@ namespace VeggiFoodAPI.Logger
                     JsonNamingPolicy.CamelCase
                 };
 
-                var json = JsonSerializer.Serialize(response, options);
+                var json = JsonSerializer.Serialize(_customResponse.GetResponseModel(new string[] { ex.Message }, _env.IsDevelopment() ? ex.StackTrace?.ToString() : null), options);
 
                 await context.Response.WriteAsync(json);
             }
