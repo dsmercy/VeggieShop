@@ -1,14 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Link } from 'react-router-dom';
-import Header from '../layout/Header';
-import Footer from '../layout/Footer';
-import Theme from '../layout/Theme';
-import ProductCard from '../components/ProductCard'
-import Filter from "../components/Filter";
+import ProductCard from "../../components/ProductCard";
+import Filter from "../../components/Filter";
 
 
 export default function ProductsList() {
-    const [products, setProducts] = useState([
+    const [products] = useState([
         { id: "1", name: "chilli", description: "Fresh Chilli from farms", price: "0.8", pictureUrl: "img/listing/v1.jpg", },
         { id: "2", name: "Onion", description: "Fresh Onion from farms", price: "1.8", pictureUrl: "img/listing/v2.jpg", },
         { id: "3", name: "Cauliflower", description: "Fresh Cauliflower from farms", price: "1", pictureUrl: "img/listing/v5.jpg", },

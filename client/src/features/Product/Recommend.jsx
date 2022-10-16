@@ -1,21 +1,13 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import Button from 'react-bootstrap/Button';
-import Spinner from 'react-bootstrap/Spinner';
 
 export default function Recommend() {
 
-    const [loading,setLoading] = useState(false);
-    const [recomendedProducts, setRecomendedProducts] = useState([
+    const [recomendedProducts] = useState([
         { id: "1", name: "Fresh Orange", description: "Orange Great Quality item from Jamaica.", price: "5.0", pictureUrl: "img/recommend/r2.jpg" },
         { id: "2", name: "Green Apple", description: "Green Apple Premium item from Vietnam.", price: "4.0", pictureUrl: "img/recommend/r4.jpg" },
         { id: "3", name: "Fresh Apple", description: "Fresh Apple Premium item from Thailand.", price: "4.5", pictureUrl: "img/recommend/r7.jpg" },
     ]);
-
-    const addtoCart=()=>{
-        setLoading(true);
-        setTimeout(function(){setLoading(false)},2000);
-    }
 
     return (
         <>

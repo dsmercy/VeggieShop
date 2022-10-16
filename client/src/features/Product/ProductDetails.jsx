@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import ProductCard from '../components/ProductCard'
+import ProductCard from '../../components/ProductCard'
 
 export default function ProductDetails() {
 
-    const [products, setProducts] = useState([
+    const [products] = useState([
         { id: "1", name: "chilli", description: "Fresh Chilli from farms", price: "0.8", pictureUrl: "img/listing/v1.jpg", },
         { id: "2", name: "Onion", description: "Fresh Onion from farms", price: "1.8", pictureUrl: "img/listing/v2.jpg", },
         { id: "3", name: "Cauliflower", description: "Fresh Cauliflower from farms", price: "1", pictureUrl: "img/listing/v5.jpg", },
