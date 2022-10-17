@@ -59,8 +59,20 @@ const Account = {
     login: (values) => requests.post('account/login', values),
     register: (values) => requests.post('account/register', values)
 }
-const services = {
-    Account
+
+
+const Product = {
+    getAll: () => requests.get('product?PageSize=20'),
+    // get: () => requests.get('product?PageSize=8'),
+    post: (url, body) => axios.post(url, body).then(responseBody),
+    put: (url, body) => axios.put(url, body).then(responseBody),
+    delete: (url) => axios.delete(url).then(responseBody),
 }
+
+const services = {
+    Account,
+    Product
+}
+
 
 export default services;

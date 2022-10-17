@@ -1,30 +1,23 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Button from 'react-bootstrap/Button';
 import Spinner from 'react-bootstrap/Spinner';
 import ProductCard from './ProductCard';
+import services from "../api/services";
 
 export default function Trending() {
 
-   const [products, setProducts] = useState([
-      { id: "1", name: "chilli", description: "Fresh Chilli from farmms", price: "0.8", pictureUrl: "img/listing/v1.jpg", },
-      { id: "2", name: "Onion", description: "Fresh Onion from farmms", price: "1.8", pictureUrl: "img/listing/v2.jpg", },
-      { id: "3", name: "Cauliflower", description: "Fresh Cauliflower from farmms", price: "1", pictureUrl: "img/listing/v5.jpg", },
-      { id: "4", name: "Carrot", description: "Fresh Chilli from farmms", price: "1", pictureUrl: "img/listing/v6.jpg", },
-      { id: "5", name: "Tomato", description: "Fresh Tomato from farmms", price: "1", pictureUrl: "img/listing/v3.jpg", },
-      { id: "6", name: "Cabbage", description: "Fresh Cabbage from farmms", price: "1", pictureUrl: "img/listing/v4.jpg", },
-      { id: "7", name: "Start Anise", description: "Fresh Chilli from farmms", price: "1", pictureUrl: "img/listing/v7.jpg", },
-      { id: "8", name: "Brinjal", description: "Fresh Onion from farmms", price: "1.8", pictureUrl: "img/listing/v8.jpg" },
-      { id: "9", name: "Capsicum", description: "Fresh Onion from farmms", price: "1.8", pictureUrl: "img/listing/v9.jpg" },
-      { id: "10", name: "Lady Finger", description: "Fresh Onion from farmms", price: "1.8", pictureUrl: "img/listing/v10.jpg" },
-      { id: "11", name: "Garlic", description: "Fresh Onion from farmms", price: "1.8", pictureUrl: "img/listing/v11.jpg" },
-      { id: "12", name: "Ginger", description: "Fresh Onion from farmms", price: "1.8", pictureUrl: "img/listing/v12.jpg" },
-  ]);
+    const [products, setProducts] = useState([]);
+    useEffect(() => {
+        services.Product.getAll().then(result => {
+            console.log(result.data);
+            setProducts(result.data);
+        });
+    }, []);
 
-
-   return (
-      <>
-         <section className="py-4 osahan-main-body">
+    return (
+        <>
+            <section className="py-4 osahan-main-body">
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-12">
@@ -34,8 +27,8 @@ export default function Trending() {
                                 </div>
                                 <div className="row">
 
-                                    {products.slice(0,8).map(product => (
-                                        <ProductCard product={product} key={product.id}/>
+                                    {products.slice(0, 8).map(product => (
+                                        <ProductCard product={product} key={product.id} />
                                     ))}
                                 </div>
                             </div>
@@ -44,7 +37,7 @@ export default function Trending() {
                 </div>
             </section>
 
-      </>
-   )
+        </>
+    )
 }
 

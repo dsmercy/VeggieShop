@@ -5,17 +5,20 @@ import { Link } from 'react-router-dom';
 
 export default function ProductCard({ product }) {
 
-const [loading,setLoading] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [cartItems, setCartItems] = useState([]);
 
     // set default theme
     // useEffect(() => {
     //     console.log(product);
     // }, [product]);
 
-const addtoCart=()=>{
-    setLoading(true);
-    setTimeout(function(){setLoading(false)},2000);
-}
+    const addtoCart = (product) => {
+        setLoading(true);
+        setCartItems([...cartItems, 'product.id']);
+        localStorage.setItem('cart', 'product.id');
+        setTimeout(function () { setLoading(false) }, 2000);
+    }
 
 
     return (
@@ -26,11 +29,11 @@ const addtoCart=()=>{
                         <div className="text-dark">
                             <div className="member-plan position-absolute"><span className="badge m-3 badge-danger">10%</span></div>
                             <div className="p-3">
-                                <Link to='/productdetails'><img src={product.pictureUrl} className="img-fluid item-img w-100 mb-3"  /></Link>
+                                <Link to='/productdetails'><img src={product.pictureUrl} className="img-fluid item-img w-100 mb-3" /></Link>
                                 <h6>{product.name}</h6>
                                 <div className="d-flex align-items-center">
                                     <h6 className="price m-0 text-success">${product.price}/kg</h6>
-                                    {!loading ? <button to='/' className="btn btn-success btn-sm ml-auto" onClick={addtoCart}>Add to Cart</button>
+                                    {!loading ? <button to='/' className="btn btn-success btn-sm ml-auto" onClick={() => addtoCart(product)}>Add to Cart</button>
                                         : <Button variant="primary" className="btn btn-success btn-sm ml-auto">
                                             <Spinner
                                                 as="span"
