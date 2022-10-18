@@ -14,6 +14,7 @@ const [loading,setLoading] = useState(false);
 
 const addtoCart=()=>{
     setLoading(true);
+    localStorage.setItem('rememberMe', "rememberMe");
     setTimeout(function(){setLoading(false)},2000);
 }
 
