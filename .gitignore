@@ -453,3 +453,4 @@ $RECYCLE.BIN/
 !.vscode/launch.json
 !.vscode/extensions.json
 Web API/VeggiFoodAPI/appsettings.json
+client/package-lock.json

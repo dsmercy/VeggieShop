@@ -6,19 +6,11 @@ import { Link } from 'react-router-dom';
 export default function ProductCard({ product }) {
 
     const [loading, setLoading] = useState(false);
-    const [cartItems, setCartItems] = useState([]);
 
     // set default theme
     // useEffect(() => {
     //     console.log(product);
     // }, [product]);
-
-    const addtoCart = (product) => {
-        setLoading(true);
-        setCartItems([...cartItems, 'product.id']);
-        localStorage.setItem('cart', 'product.id');
-        setTimeout(function () { setLoading(false) }, 2000);
-    }
 
 
     return (
