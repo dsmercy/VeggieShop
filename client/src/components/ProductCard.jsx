@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Spinner from 'react-bootstrap/Spinner';
 import { Link } from 'react-router-dom';
 
-export default function ProductCard({ product }) {
+export default function ProductCard({ product, addtoCart }) {
 
     const [loading, setLoading] = useState(false);
 

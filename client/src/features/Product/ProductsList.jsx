@@ -6,11 +6,25 @@ import services from "../../api/services";
 
 export default function ProductsList() {
     const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(false);
 
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
+    // const [loading, setLoading] = useState(false);
+    const [cartItems, setCartItems] = useState([]);
+
+
+    const addtoCart = (product) => {
+        // setLoading(true);
+        setCartItems([...cartItems, product.id]);
+        localStorage.setItem('cart', cartItems);
+        // setTimeout(function () { setLoading(false) }, 2000);
+    }
+
+
 
     // set default theme
     useEffect(() => {
@@ -18,7 +32,6 @@ export default function ProductsList() {
             setProducts(result.data);
         });
     }, []);
-
 
     return (
         <>
@@ -36,7 +49,7 @@ export default function ProductsList() {
                                 <div className="row">
 
                                     {products.map(product => (
-                                        <ProductCard product={product} key={product.id} />
+                                        <ProductCard product={product} key={product.id} addtoCart={addtoCart} />
                                     ))}
                                 </div>
                             </div>
